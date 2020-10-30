@@ -203,6 +203,7 @@ class CRM_Core_Payment_iATSServiceACHEFT extends CRM_Core_Payment_iATSService {
    */
   public function doPayment(&$params, $component = 'contribute') {
 
+    CRM_Utils_Hook::alterPaymentProcessorParams($this, $params, $params);
     if (!$this->_profile) {
       return self::error('Unexpected error, missing profile');
     }
