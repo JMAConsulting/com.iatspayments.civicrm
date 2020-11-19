@@ -30,26 +30,25 @@ cj(function ($) {
   });
 
   function toggleRecurringStartDate( ) {
-    console.log($('#partial_payment').prop('checked'));
     if ($('#partial_payment').prop('checked')) {
-      $('#iats-recurring-start-date').show().val('');
+      $('#iats-recurring-start-date').show();
+      $('#receive_date').next('input').datepicker('setDate', null);
     }
     else {
       $('#iats-recurring-start-date').hide();
-      $("#iats-recurring-start-date option:selected").prop("selected", false);
-      $("#iats-recurring-start-date option:first").prop("selected", "selected");
+      $('#receive_date').next('input').datepicker('setDate', null);
     }
-  };
+  }
 
   function toggleRecur( ) {
     var isRecur = $('input[id="is_recur"]:checked');
     if (isRecur.val() > 0) {
-      $('#iats-recurring-start-date').show().val('');
+      $('#iats-recurring-start-date').show();
+      $('#receive_date').next('input').datepicker('setDate', null);
     }
     else {
       $('#iats-recurring-start-date').hide();
-      $("#iats-recurring-start-date option:selected").prop("selected", false);
-      $("#iats-recurring-start-date option:first").prop("selected", "selected");
+      $('#receive_date').next('input').datepicker('setDate', null);
     }
-  };
+  }
 });
