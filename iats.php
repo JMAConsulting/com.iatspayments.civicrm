@@ -357,6 +357,7 @@ function iats_civicrm_buildForm_CRM_Financial_Form_Payment(&$form) {
 
   // If enabled provide a way to set future contribution dates. 
   // Uses javascript to hide/reset unless they have recurring contributions checked.
+  $settings = Civi::settings()->get('iats_settings');
   if (!empty($settings['enable_public_future_recurring_start'])
     && $form->_paymentObject->supports('FutureRecurStartDate')
   ) {
