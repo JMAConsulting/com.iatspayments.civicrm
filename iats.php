@@ -357,13 +357,10 @@ function iats_civicrm_buildForm_CRM_Financial_Form_Payment(&$form) {
 
   // If enabled provide a way to set future contribution dates. 
   // Uses javascript to hide/reset unless they have recurring contributions checked.
-  $settings = Civi::settings()->get('iats_settings');
   if (!empty($settings['enable_public_future_recurring_start'])
     && $form->_paymentObject->supports('FutureRecurStartDate')
   ) {
-    $allow_days = empty($settings['days']) ? array('-1') : $settings['days'];
-    $start_dates = CRM_Iats_Transaction::get_future_monthly_start_dates(time(), $allow_days);
-    $form->addElement('select', 'receive_date', ts('Date of first contribution'), $start_dates);
+    $form->add('datepicker', 'receive_date', ts('Date of first contribution'), [], FALSE, ['time' => FALSE, 'minDate' => date("Y-m-d")]);
     CRM_Core_Region::instance('billing-block')->add(array(
       'template' => 'CRM/Iats/BillingBlockRecurringExtra.tpl',
     ));
