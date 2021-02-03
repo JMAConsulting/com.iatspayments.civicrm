@@ -65,6 +65,10 @@ class CRM_Core_Payment_iATSServiceACHEFT extends CRM_Core_Payment_iATSService {
     return self::$_singleton[$processorName];
   }
 
+  public function supportsUpdateSubscriptionBillingInfo() {
+    return FALSE;
+  }
+
   /**
    * Get array of fields that should be displayed on the payment form for ACH/EFT (badly named as debit cards).
    *
